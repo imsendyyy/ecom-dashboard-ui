@@ -1,70 +1,171 @@
-# Getting Started with Create React App
+# 🛒 E-Commerce Dashboard UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A production-ready **React + Axios + Bootstrap** E-Commerce homepage that loads multiple product sections concurrently, detects user location, and handles API failures gracefully.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🔗 Live Demo
 
-### `npm start`
+👉 **Live Preview:**  
+https://ecom-ui-task.netlify.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🖼️ Screenshots
 
-### `npm test`
+![Uploading ecom-web-ui.png…]()
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ⭐ Overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project is a modern E-commerce homepage built using React featuring:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 4 parallel API calls  
+- Section-wise loading & error states  
+- Retry mechanism per section  
+- Browser + IP location detection  
+- Clean Bootstrap UI with skeleton loaders  
+- Fully optimized `useProducts()` custom hook
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### ✅ 1. Concurrent Product Fetching (4 API calls)
+The homepage loads these sections simultaneously:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Frequently Bought  
+- Suggested For You  
+- Best Deals Today  
+- Out of Stock Today  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Each section has:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Independent loading state  
+- Independent error state  
+- Retry button  
+- Skeleton loaders  
 
-## Learn More
+Using:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `AbortController`  
+- `Promise.allSettled()` for safe API handling  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+### ✅ 2. Smart Location Detection
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Two-step location system:
 
-### Analyzing the Bundle Size
+#### **Step 1 → Browser GPS**
+- Requests geolocation permission  
+- Displays latitude & longitude if allowed  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### **Step 2 → IP Fallback**
+If GPS is denied or fails:
 
-### Making a Progressive Web App
+- Gets public IP  
+- Detects city, region, and country  
+- Ensures UI never breaks or blocks  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+### ✅ 3. Clean UI (Bootstrap 5)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Responsive grid  
+- Product cards  
+- Skeleton placeholders  
+- Retry buttons  
+- Organized sections  
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### ✅ 4. Optimized Custom Hook (`useProducts()`)
 
-### `npm run build` fails to minify
+Handles:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 4 parallel API calls  
+- Abort on re-fetch  
+- Section-wise retry  
+- Individual loading/error states  
+- Does not block UI even if an API fails  
+
+---
+
+## 🧠 Problems Solved
+
+- Prevented app crashes when an API breaks  
+- Removed memory leaks using abort controllers  
+- Avoided UI flickering issues  
+- Implemented correct GPS → IP fallback logic  
+- Built reusable, scalable structure  
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+│── components/
+│   ├── Header.jsx
+│   ├── Section.jsx
+│
+│── hooks/
+│   ├── useProducts.js
+│
+│── utils/
+│   ├── detectLocation.js
+│
+│── pages/
+│   ├── EcommerceHomePage.jsx
+│
+└── App.js
+```
+
+---
+
+## 🛠 Tech Stack
+
+- React JS  
+- Axios  
+- Bootstrap 5  
+- AbortController  
+- Browser Geolocation API  
+- IP Geolocation API  
+
+---
+
+## ▶️ Setup Instructions
+
+### 1. Clone Repo
+```sh
+git clone https://github.com/imsendyyy/ecom-dashboard-ui.git
+```
+
+### 2. Install Dependencies
+```sh
+npm install
+```
+
+### 3. Start App
+```sh
+npm start
+```
+
+---
+
+## 🎯 Future Enhancements
+
+- Theme switch (Dark/Light)  
+- Backend API integration  
+- Global state with Redux/Zustand  
+- Infinite scroll / Pagination  
+- Image lazy loading  
+
+---
+
+## 📜 License
+
+MIT License — open for modification and use.
+
